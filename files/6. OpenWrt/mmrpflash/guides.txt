@@ -1,0 +1,12 @@
+nmrpflash.exe -L
+
+nmrpflash.exe -i net14 -f R6800_V1.2.0.92_1.0.1.img
+
+og
+nmrpflash.exe -i net14 -f openwrt-23.05.0-ramips-mt7621-netgear_r6800-squashfs-factory.img
+
+openwrt.ai 192.168.132.1 root:root
+
+nmrpflash.exe -i net14 -f openwrt-04.05.2024-ramips-mt7621-netgear_r6800-squashfs-factory.img
+
+cd C:\Users\Rome\Desktop\mmrpflash

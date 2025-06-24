@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Garage 79 – File Browser</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 2rem;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    #file-list {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    li {
+      margin: 0.3rem 0;
+    }
+
+    li.folder {
+      cursor: pointer;
+      user-select: none;
+      padding: 0.25rem;
+    }
+
+    li.folder:hover {
+      background-color: #f0f0f0;
+    }
+
+    li.folder::before {
+  content: "▶ ";
+  display: inline-block;
+  margin-right: 4px;
+  color: #66b3ff; /* Light blue */
+}
+
+li.folder.expanded::before {
+  content: "▼ ";
+  color: #66b3ff;
+}
+
+
+    li.folder.expanded::before {
+      content: "▼ ";
+    }
+
+    li.file a::before {
+      content: "📄 ";
+    }
+
+    li.file a {
+      text-decoration: none;
+      color: #0066cc;
+    }
+
+    li.file a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+
+      #file-list {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🛠️ Garage 79</h1>
+  <div id="file-list">📁 Files directory</div>
+
+  <script>
+    const username = 'augustsna';
+    const repo = 'Garage79';
+    const folderPath = 'files';
+
+    async function fetchGitHubContents(path) {
+      const url = `https://api.github.com/repos/${username}/${repo}/contents/${path}`;
+      const res = await fetch(url);
+      return res.json();
+    }
+
+    async function createFileTree(path, container) {
+      const items = await fetchGitHubContents(path);
+      const ul = document.createElement('ul');
+
+      items.forEach(item => {
+        const li = document.createElement('li');
+
+        if (item.type === 'dir') {
+          li.className = 'folder';
+          li.textContent = item.name;
+
+          li.addEventListener('click', async function (e) {
+            e.stopPropagation();
+
+            if (li.classList.contains('expanded')) {
+              li.classList.remove('expanded');
+              const child = li.querySelector('ul');
+              if (child) li.removeChild(child);
+            } else {
+              li.classList.add('expanded');
+              if (!li.querySelector('ul')) {
+                await createFileTree(item.path, li);
+              }
+            }
+          });
+
+        } else if (item.type === 'file') {
+          li.className = 'file';
+          const a = document.createElement('a');
+          a.href = item.download_url;
+          a.textContent = item.name;
+          a.target = '_blank';
+          li.appendChild(a);
+        }
+
+        ul.appendChild(li);
+      });
+
+      container.appendChild(ul);
+    }
+
+    const fileListContainer = document.getElementById('file-list');
+    createFileTree(folderPath, fileListContainer);
+  </script>
+</body>
+</html>
