@@ -14,7 +14,7 @@ https://seatv.netlinkbroadcaster.com/hls/test.m3u8
 #EXTINF:-1 tvg-id="PNN.kh" tvg-name="PNN" tvg-logo="https://www.lyngsat.com/logo/tv/pp/pnn_kh.png" group-title="Cambodia",PNN
 http://49.156.35.102:5080/LiveApp/streams/UE5OIEhEIFRW.m3u8
 #EXTINF:-1 tvg-id="ApsaraTV11.kh" tvg-name="Apsara" tvg-logo="https://i.imgur.com/9wJe71I.png" group-title="Cambodia",Apsara
-43.252.18.195:5080/live/streams/Apsara__khmer_etv.playlist000018446.ts
+43.252.18.195:5080/live/streams/Apsara__khmer_etv.playlist.m3u8
 #EXTINF:-1 tvg-id="FreshNews.kh" tvg-name="Fresh News" tvg-logo="https://i.imgur.com/bV6sawt.png" group-title="Cambodia",Fresh News
 http://streaming.freshnewsasia.com:1935/live/myStream/playlist.m3u8
 #EXTINF:-1 tvg-id="CTV8HD.kh" tvg-name="CTV8" tvg-logo="https://i.imgur.com/yrdr4Po.png" group-title="Cambodia",CTV8
