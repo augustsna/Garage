@@ -11,7 +11,7 @@ http://clive.malisresidences.com:1935/rhm_hdtv/_definst_/smil:RHMHDTV.smil/playl
 http://43.252.18.195:5080/live/streams/Town_khmer_etv.playlist.m3u8
 #EXTINF:-1 tvg-id="SEATV.kh" tvg-name="SEATV" tvg-logo="https://i.imgur.com/oZPorvg.png" group-title="Cambodia",SEATV
 https://seatv.netlinkbroadcaster.com/hls/test.m3u8
-#EXTINF:-1 tvg-id="PNN.kh" tvg-name="PNN" tvg-logo="https://i.imgur.com/ObtFGBW.png" group-title="Cambodia",PNN
+#EXTINF:-1 tvg-id="PNN.kh" tvg-name="PNN" tvg-logo="https://www.lyngsat.com/logo/tv/pp/pnn_kh.png" group-title="Cambodia",PNN
 http://49.156.35.102:5080/LiveApp/streams/UE5OIEhEIFRW.m3u8
 #EXTINF:-1 tvg-id="ApsaraTV11.kh" tvg-name="Apsara" tvg-logo="https://i.imgur.com/9wJe71I.png" group-title="Cambodia",Apsara
 https://live.ams.com.kh/app/stream/playlist.m3u8
