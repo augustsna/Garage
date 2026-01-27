@@ -49,8 +49,6 @@ http://clive.malisresidences.com:1935/hmcine/_definst_/smil:hmcine.smil/chunklis
 http://clive.malisresidences.com:1935/hmplay/_definst_/smil:hmplay.smil/chunklist_w2000489341_b550000_sleng.m3u8
 #EXTINF:-1 tvg-id="DTHFilm.kh" tvg-name="DTH Film" tvg-logo="https://www.lyngsat.com/logo/tv/dd/dth-film-1-kh.png" group-title="Cambodia",DTH Film
 http://tv.cootel.com.kh:8077/streams/d/Komsan/playlist.m3u8
-#EXTINF:-1 tvg-id="KhmerDubbed.kh" tvg-name="Khmer Dubbed" tvg-logo="https://i.imgur.com/SNTf2r3.png" group-title="Cambodia",Khmer Dubbed
-http://43.252.18.195:5080/LiveApp/streams/AGG.tv360.metfone.com.kh
 #EXTINF:-1 tvg-id="ChineseDrama.kh" tvg-name="Chinese Drama" tvg-logo="https://i.imgur.com/SNTf2r3.png" group-title="Cambodia",Chinese Drama
 http://175.100.5.109:5080/live/streams/ChineseDrama.m3u8
 #EXTINF:-1 tvg-id="KoreanDrama.kh" tvg-name="Korean Drama" tvg-logo="https://i.imgur.com/SNTf2r3.png" group-title="Cambodia",Korean Drama
