@@ -1,6 +1,6 @@
 #EXTM3U
 #EXTINF:-1 tvg-id="BayonTV.kh" tvg-name="Bayon" tvg-logo="https://i.imgur.com/Gry2KEN.jpg" group-title="Cambodia",Bayon
-https://stream.mekongtv.net/live/bayontv_480k.stream/playlist.m3u8
+https://stream.mekongtv.net/live/bayontv_480k.stream/playlist.m3u8?mtvstarttime=0&mtvendtime=1772174463&mtvhash=zUtL8WMpOrnpyprid8a5bxsfQKR8R2-l-QOmB-9f9lU=
 #EXTINF:-1 tvg-id="BTVNews.kh" tvg-name="BTV" tvg-logo="https://i.imgur.com/sUHiRj3.png" group-title="Cambodia",BTV
 http://43.252.18.195:5080/live/streams/btv_hd_playlist.m3u8
 #EXTINF:-1 tvg-id="HangMeasHDTV.kh" tvg-name="Hang Meas" tvg-logo="http://cambodiandth.com.kh/wp-content/uploads/2023/10/01-HM-copy.png" group-title="Cambodia",Hang Meas
