@@ -1,0 +1,76 @@
+name: Update FFmpeg Essentials
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 3:00 AM Sunday ICT is 8:00 PM Saturday UTC.
+    - cron: "0 20 * * 6"
+
+permissions:
+  contents: write
+
+jobs:
+  update-ffmpeg:
+    name: Download latest essentials build
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download latest GyanD essentials archive
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $ErrorActionPreference = "Stop"
+
+          $targetDir = Join-Path $env:GITHUB_WORKSPACE "files\8. ffmpeg"
+          New-Item -ItemType Directory -Force -Path $targetDir | Out-Null
+
+          $releaseHeaders = @{
+            "Accept" = "application/vnd.github+json"
+            "Authorization" = "Bearer $env:GH_TOKEN"
+            "X-GitHub-Api-Version" = "2022-11-28"
+          }
+
+          $release = Invoke-RestMethod `
+            -Uri "https://api.github.com/repos/GyanD/codexffmpeg/releases/latest" `
+            -Headers $releaseHeaders
+
+          $asset = $release.assets |
+            Where-Object { $_.name -match "^ffmpeg-.+-essentials_build\.7z$" } |
+            Select-Object -First 1
+
+          if (-not $asset) {
+            throw "No ffmpeg essentials .7z asset found in latest release $($release.tag_name)."
+          }
+
+          Get-ChildItem -Path $targetDir -Filter "ffmpeg-*-essentials_build.7z" -File |
+            Remove-Item -Force
+
+          $destination = Join-Path $targetDir $asset.name
+          Invoke-WebRequest `
+            -Uri $asset.browser_download_url `
+            -Headers @{ "Accept" = "application/octet-stream" } `
+            -OutFile $destination
+
+          Write-Host "Downloaded $($asset.name) from $($release.html_url)"
+
+      - name: Commit updated archive
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add "files/8. ffmpeg"
+
+          if ((git status --porcelain).Length -eq 0) {
+            Write-Host "FFmpeg essentials archive is already up to date."
+            exit 0
+          }
+
+          git commit -m "Update FFmpeg essentials build"
+          git push
